@@ -8,8 +8,8 @@ class ANFIS:
     def __init__(self, n_inputs, n_rules, learning_rate=1e-2):
         self.n = n_inputs
         self.m = n_rules
-        self.inputs = tf.placeholder(tf.float32, shape=(None, n_inputs))  # Input
-        self.targets = tf.placeholder(tf.float32, shape=None)  # Desired output
+        self.inputs = tf.compat.v1.placeholder(tf.float32, shape=(None, n_inputs))  # Input
+        self.targets = tf.compat.v1.placeholder(tf.float32, shape=None)  # Desired output
         mu = tf.get_variable("mu", [n_rules * n_inputs],
                              initializer=tf.random_normal_initializer(0, 1))  # Means of Gaussian MFS
         sigma = tf.get_variable("sigma", [n_rules * n_inputs],
